@@ -9,7 +9,7 @@
 import SwiftUI
 
 ///
-// MARK: base typography materials
+// MARK: Base typography materials
 ///
 struct BaseTypography {
 
