@@ -13,11 +13,8 @@ struct ContentView: View {
     /// Level 2 buttons
     let CircleButtonPrimary = TokenButton(circleButtonType: .primary, buttonIcon: "circle-plus")
     let CircleButtonSupport = TokenButton(circleButtonType: .support, buttonIcon: "circle-plus-light")
-    
     let IconButton = TokenButton(buttonIcon: "upload")
-    
     let CapsuleButton = TokenButton(capsuleText: "Save")
-    
     let TextButton = TokenButton(buttonText: "select")
     
     var body: some View {
@@ -28,6 +25,15 @@ struct ContentView: View {
         
         return GeometryReader { geometry in
             VStack(alignment: .center, spacing: 24) {
+                
+                Spacer()
+                
+                Text("Demonstration of buttons")
+                    .font(Font.Typography.sizingFont(font: .sub, size: .body))
+                    .foregroundColor(Color.Token.textTheme)
+                
+                Spacer()
+                
                 /// Level 1 usage
                 /*
                 Button(action: {}) {
@@ -81,6 +87,8 @@ struct ContentView: View {
                     IconButtonHighlightDemo.buttonLabel.highlight(.on)
                 }.buttonStyle(IconButtonHighlightDemo.buttonStyle)
                 */
+                
+                Spacer()
             }
         }
     }

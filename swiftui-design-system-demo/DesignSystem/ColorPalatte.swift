@@ -12,7 +12,7 @@ import SwiftUI
 // MARK: Base color palette materials
 ///
 
-/// 1. Level 1 materials
+/// 1. Level 2 base
 struct BaseColor {
     /// dynamic color sets (with dark and light mode)
     let contrastPrimary = Color("contrastPrimary")
@@ -20,7 +20,6 @@ struct BaseColor {
     let themePrimary = Color("themePrimary")
     let themeSecondary = Color("themeSecondary")
     let brandPrimary = Color("brandPrimary")
-    let brandSecondary = Color("brandSecondary")
     
     /// staic color sets (not updating along with color mode)
     let darkPrimary = Color("darkPrimary")
@@ -28,7 +27,7 @@ struct BaseColor {
     let gray = Color("gray")
 }
 
-/// 2. Level 2 tokens
+/// 2. Level 3 tokens
 struct TokenColor {
     let baseColor = BaseColor()
     
