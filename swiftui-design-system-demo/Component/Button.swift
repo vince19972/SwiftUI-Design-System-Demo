@@ -33,7 +33,7 @@ struct TokenButton {
         /// Get required properties
         var backgroundColor: TokenButtonStyle.BackgroundColor! = .theme
         var borderStyle: TokenButtonStyle.BorderStyle! = .none
-        var iconSize: IconSize! = .large
+        var iconSize: IconSize! = .medium
         
         /// Background Color config
         switch circleButtonType {
@@ -70,10 +70,10 @@ struct TokenButton {
     // Icon Button
     ///
     private var iconBtnType: IconBtnType! = .action
-    private var iconBtnIcon: String! = "cross-light"
+    private var iconBtnIcon: String! = "upload"
     /// Icon Button
     init(iconButtonType: IconBtnType = .tool, buttonIcon: String) {
-        var iconSize: IconSize! = .large
+        var iconSize: IconSize! = .medium
         
         /// Button size
         switch iconButtonType {
@@ -181,13 +181,11 @@ struct TokenButtonLabel: View {
     // Icon Type
     ///
     private var iconSize: TokenButton.IconSize?
-    private var resizable: Bool?
     /// Icon Type
-    init(name: String, iconSize: TokenButton.IconSize, resizable: Bool? = false) {
+    init(name: String, iconSize: TokenButton.IconSize) {
         self.labelType = .icon
         self.iconName = name
         self.iconSize = iconSize
-        self.resizable = resizable
     }
     
     ///
@@ -209,24 +207,16 @@ struct TokenButtonLabel: View {
         case .icon:
             let iconString = "\(iconName!)\(highlightSuffix)"
             
-            if (resizable!) {
-                renderView = AnyView(
-                     Image("\(iconString)")
-                         .resizable()
-                         .aspectRatio(contentMode: .fill)
-                         .frame(width: iconSize!.rawValue, height: iconSize!.rawValue, alignment: .center)
-                )
-             } else {
-                renderView = AnyView(
-                     Image("\(iconString)")
-                         .aspectRatio(contentMode: .fill)
-                         .frame(width: iconSize!.rawValue, height: iconSize!.rawValue, alignment: .center)
-                )
-             }
+            renderView = AnyView(
+                 Image("\(iconString)")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: iconSize!.rawValue, height: iconSize!.rawValue, alignment: .center)
+            )
         case .text:
             renderView = AnyView(
                 Text("\(btnText!)")
-                    .font(Font.Typography.sizingFont(font: .main, size: .caption))
+                    .font(Font.Typography.sizingFont(font: .main, size: .body))
             )
         }
         
@@ -289,12 +279,12 @@ struct TokenButtonStyle: ButtonStyle {
     /// Circle Icon Button
     init(iconSize: TokenButton.IconSize,
          backgroundColor: BackgroundColor,
-         border: BorderStyle? = nil) {
+         border: BorderStyle? = .none) {
         self.styleType = .circleIcon
         self.iconSize = iconSize
-        self.borderStyle = border == nil
+        self.borderStyle = border == .none
             ? (Color.clear, 0, 0)
-            : (Color.Token.buttonTheme, CGFloat(3), 12)
+            : (Color.Token.buttonTheme, CGFloat(2), 12)
         self.backgroundColor = backgroundColor.getColor()
     }
     
@@ -330,7 +320,7 @@ struct TokenButtonStyle: ButtonStyle {
                 .frame(width: iconSize!.rawValue, height: iconSize!.rawValue, alignment: .center)
                 .clipShape(RoundedRectangle(cornerRadius: iconSize!.rawValue))
                 .overlay(RoundedRectangle(cornerRadius: iconSize!.rawValue)
-                    .stroke(Color.Token.buttonContrast, lineWidth: 3))
+                    .stroke(borderStyle!.color, lineWidth: borderStyle!.width))
             )
         case .icon:
             renderView = AnyView(configuration.label

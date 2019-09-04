@@ -26,92 +26,62 @@ struct ContentView: View {
         var TextButtonActiveDemo = TokenButton(buttonText: "select")
         var IconButtonHighlightDemo = TokenButton(buttonIcon: "upload")
         
-        /// Highlight demo
-        /*
-        var textbtn = TokenButton(buttonText: "select")
-        var textlabel = textbtn.buttonLabel.highlight(.on)
-        print(textlabel.isHighlighted)
-        print(textbtn.buttonLabel.isHighlighted)
-        */
-        
-        return VStack {
-            /// Level 1 usage
-            /*
-             
-            Button(action: {}) {
-                TokenButtonLabel(name: "circle-camera-medium", iconSize: .large, shadow: .none)
-            }.buttonStyle(TokenButtonStyle(iconSize: .large, shadow: .loose, backgroundColor: .theme))
+        return GeometryReader { geometry in
+            VStack(alignment: .center, spacing: 24) {
+                /// Level 1 usage
+                /*
+                Button(action: {}) {
+                    TokenButtonLabel(name: "circle-plus", iconSize: .medium)
+                }.buttonStyle(TokenButtonStyle(iconSize: .medium, backgroundColor: .theme))
 
-            Button(action: {}) {
-                TokenButtonLabel(name: "circle-camera-medium", iconSize: .large, shadow: .intense)
-            }.buttonStyle(TokenButtonStyle(iconSize: .large, shadow: .loose, backgroundColor: .clear, border: .regular))
 
-            Button(action: {}) {
-                TokenButtonLabel(name: "cross-light", iconSize: .small, shadow: .intense)
-            }.buttonStyle(TokenButtonStyle(iconSize: .small, shadow: .intense))
+                Button(action: {}) {
+                    TokenButtonLabel(text: "select")
+                }.buttonStyle(TokenButtonStyle(textColor: .highlight))
+                 */
+                 
+                
+                /// Level 2 usage
+                Button(action:{}) {
+                    self.CircleButtonPrimary.buttonLabel
+                }.buttonStyle(self.CircleButtonPrimary.buttonStyle)
 
-            Button(action: {}) {
-                TokenButtonLabel(text: "Save", weight: .bold)
-            }.buttonStyle(TokenButtonStyle(shadow: .loose, backgroundColor: .highlight, textColor: .light))
+                Button(action:{}) {
+                    self.CircleButtonSupport.buttonLabel
+                }.buttonStyle(self.CircleButtonSupport.buttonStyle)
 
-            Button(action: {}) {
-                TokenButtonLabel(text: "select", weight: .bold)
-            }.buttonStyle(TokenButtonStyle(textColor: .highlight))
-             
-            */
-            
-            /// Level 2 usage
-            /*
-            Button(action:{}) {
-                CircleButtonLarge.buttonLabel
-            }.buttonStyle(CircleButtonLarge.buttonStyle)
+                Button(action:{}) {
+                    self.IconButton.buttonLabel
+                }.buttonStyle(self.IconButton.buttonStyle)
 
-            Button(action:{}) {
-                CircleButtonPrimary.buttonLabel
-            }.buttonStyle(CircleButtonPrimary.buttonStyle)
+                Button(action:{}) {
+                    self.CapsuleButton.buttonLabel
+                }.buttonStyle(self.CapsuleButton.buttonStyle)
 
-            Button(action:{}) {
-                CircleButtonSecondary.buttonLabel
-            }.buttonStyle(CircleButtonSecondary.buttonStyle)
-
-            Button(action:{}) {
-                CircleButtonSupport.buttonLabel
-            }.buttonStyle(CircleButtonSupport.buttonStyle)
-
-            Button(action:{}) {
-                IconButtonAction.buttonLabel
-            }.buttonStyle(IconButtonAction.buttonStyle)
-
-            Button(action:{}) {
-                IconButtonTool.buttonLabel
-            }.buttonStyle(IconButtonTool.buttonStyle)
-
-            Button(action:{}) {
-                CapsuleButton.buttonLabel
-            }.buttonStyle(CapsuleButton.buttonStyle)
-
-            Button(action:{}) {
-                TextButton.buttonLabel
-            }.buttonStyle(TextButton.buttonStyle)
-            */
-            
-            /// Active modifier demo
-            Button(action:{}) {
-                TextButtonActiveDemo.buttonLabel
-            }.buttonStyle(TextButtonActiveDemo.buttonStyle)
-            
-            Button(action:{}) {
-                TextButtonActiveDemo.buttonLabel
-            }.buttonStyle(TextButtonActiveDemo.buttonStyle.activate(.off))
-            
-            /// Highlight modifier demo
-            Button(action:{}) {
-                IconButtonHighlightDemo.buttonLabel
-            }.buttonStyle(IconButtonHighlightDemo.buttonStyle)
-            
-            Button(action:{}) {
-                IconButtonHighlightDemo.buttonLabel.highlight(.on)
-            }.buttonStyle(IconButtonHighlightDemo.buttonStyle)
+                Button(action:{}) {
+                    self.TextButton.buttonLabel
+                }.buttonStyle(self.TextButton.buttonStyle)
+                
+                /*
+                /// Active modifier demo
+                Button(action:{}) {
+                    TextButtonActiveDemo.buttonLabel
+                }.buttonStyle(TextButtonActiveDemo.buttonStyle)
+                
+                Button(action:{}) {
+                    TextButtonActiveDemo.buttonLabel
+                }.buttonStyle(TextButtonActiveDemo.buttonStyle.activate(.off))
+                
+                /// Highlight modifier demo
+                Button(action:{}) {
+                    IconButtonHighlightDemo.buttonLabel
+                }.buttonStyle(IconButtonHighlightDemo.buttonStyle)
+                
+                Button(action:{}) {
+                    IconButtonHighlightDemo.buttonLabel.highlight(.on)
+                }.buttonStyle(IconButtonHighlightDemo.buttonStyle)
+                */
+            }
         }
     }
 }
@@ -122,6 +92,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environment(\.font, Font.Typography.mainFont)
             .environment(\.colorScheme, .light)
+            .background(Color.blue)
     }
 }
 #endif
