@@ -19,7 +19,7 @@ private func getOpacityValue(_ isPressed: Bool) -> Double {
 // MARK: Token Button
 ///
 ///
-struct TokenButtonV2 {
+struct TokenButton {
     var buttonLabel: TokenButtonLabel
     var buttonStyle: TokenButtonStyle
 
@@ -27,7 +27,7 @@ struct TokenButtonV2 {
     // Circle Button
     ///
     private var circleBtnType: CircleBtnType! = .primary
-    private var circleBtnIcon: String! = "circle-camera-medium"
+    private var circleBtnIcon: String! = "circle-plus"
     /// Circle Button
     init(circleButtonType: CircleBtnType, buttonIcon: String) {
         /// Get required properties
@@ -37,10 +37,8 @@ struct TokenButtonV2 {
         
         /// Background Color config
         switch circleButtonType {
-        case .large, .primary:
+        case .primary:
             backgroundColor = .theme
-        case .secondary:
-            backgroundColor = .contrast
         case .support:
             backgroundColor = .clear
         }
@@ -55,9 +53,7 @@ struct TokenButtonV2 {
         
         /// Button Size config
         switch circleButtonType {
-        case .large:
-            iconSize = CircleBtnSize.large.getIconSize()
-        case .primary, .secondary:
+        case .primary:
             iconSize = CircleBtnSize.medium.getIconSize()
         case .support:
             iconSize = CircleBtnSize.small.getIconSize()
@@ -76,7 +72,7 @@ struct TokenButtonV2 {
     private var iconBtnType: IconBtnType! = .action
     private var iconBtnIcon: String! = "cross-light"
     /// Icon Button
-    init(iconButtonType: IconBtnType, buttonIcon: String) {
+    init(iconButtonType: IconBtnType = .tool, buttonIcon: String) {
         var iconSize: IconSize! = .large
         
         /// Button size
@@ -116,7 +112,7 @@ struct TokenButtonV2 {
         self.buttonStyle = TokenButtonStyle(textColor: .highlight)
     }
 }
-extension TokenButtonV2 {
+extension TokenButton {
     /// Global properties
     enum IconSize: CGFloat, Equatable {
         case extraLarge = 80
@@ -133,17 +129,13 @@ extension TokenButtonV2 {
     }
     /// Circle button
     enum CircleBtnType: Equatable {
-        case large
-        case primary, secondary
-        case support
+        case primary, support
     }
     enum CircleBtnSize: Equatable {
-        case large, medium, small
+        case medium, small
         
         func getIconSize() -> IconSize {
             switch self {
-            case .large:
-                return IconSize.extraLarge
             case .medium:
                 return IconSize.large
             case .small:
@@ -188,10 +180,10 @@ struct TokenButtonLabel: View {
     ///
     // Icon Type
     ///
-    private var iconSize: TokenButtonV2.IconSize?
+    private var iconSize: TokenButton.IconSize?
     private var resizable: Bool?
     /// Icon Type
-    init(name: String, iconSize: TokenButtonV2.IconSize, resizable: Bool? = false) {
+    init(name: String, iconSize: TokenButton.IconSize, resizable: Bool? = false) {
         self.labelType = .icon
         self.iconName = name
         self.iconSize = iconSize
@@ -270,7 +262,7 @@ extension TokenButtonLabel {
 /// State modifier
 extension TokenButtonLabel {
     /// Pass highlightSwitch argument bonded with @State variable in order to trigger updates
-    mutating func highlight(_ highlightSwitch: TokenButtonV2.StateSwitch) -> Self {
+    mutating func highlight(_ highlightSwitch: TokenButton.StateSwitch) -> Self {
         self.isHighlighted = highlightSwitch == .on ? true : false
         return self
     }
@@ -286,7 +278,7 @@ extension TokenButtonLabel {
 struct TokenButtonStyle: ButtonStyle {
     /// Global properties
     private let styleType: StyleType
-    private var iconSize: TokenButtonV2.IconSize?
+    private var iconSize: TokenButton.IconSize?
     private var backgroundColor: Color?
     private var borderStyle: StyleAlias.BorderStyle?
     private var textColor: Color?
@@ -295,7 +287,7 @@ struct TokenButtonStyle: ButtonStyle {
     var isActive = true
     
     /// Circle Icon Button
-    init(iconSize: TokenButtonV2.IconSize,
+    init(iconSize: TokenButton.IconSize,
          backgroundColor: BackgroundColor,
          border: BorderStyle? = nil) {
         self.styleType = .circleIcon
@@ -307,7 +299,7 @@ struct TokenButtonStyle: ButtonStyle {
     }
     
     /// Icon Button
-    init(iconSize: TokenButtonV2.IconSize) {
+    init(iconSize: TokenButton.IconSize) {
         self.styleType = .icon
         self.iconSize = iconSize
     }
@@ -411,7 +403,7 @@ extension TokenButtonStyle {
 /// State modifier
 extension TokenButtonStyle {
     /// Pass highlightSwitch argument bonded with @State variable in order to trigger updates
-    mutating func activate(_ activeSwitch: TokenButtonV2.StateSwitch) -> Self {
+    mutating func activate(_ activeSwitch: TokenButton.StateSwitch) -> Self {
         self.isActive = activeSwitch == .on ? true : false
         return self
     }
