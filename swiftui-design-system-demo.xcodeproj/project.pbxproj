@@ -16,6 +16,8 @@
 		8A51990C231F0A360053FED4 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51990B231F0A360053FED4 /* Typography.swift */; };
 		8A51990E231F28710053FED4 /* ColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A51990D231F28710053FED4 /* ColorPalette.xcassets */; };
 		8A519910231F29990053FED4 /* ColorPalatte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51990F231F29990053FED4 /* ColorPalatte.swift */; };
+		8A519912231FF0A30053FED4 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A519911231FF0A30053FED4 /* Button.swift */; };
+		8A519915231FFA7A0053FED4 /* AliasHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A519914231FFA7A0053FED4 /* AliasHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		8A51990B231F0A360053FED4 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		8A51990D231F28710053FED4 /* ColorPalette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorPalette.xcassets; sourceTree = "<group>"; };
 		8A51990F231F29990053FED4 /* ColorPalatte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalatte.swift; sourceTree = "<group>"; };
+		8A519911231FF0A30053FED4 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		8A519914231FFA7A0053FED4 /* AliasHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,8 @@
 		8A5198F3231ECA6A0053FED4 /* swiftui-design-system-demo */ = {
 			isa = PBXGroup;
 			children = (
-				8A519909231F0A170053FED4 /* Components */,
+				8A519913231FFA680053FED4 /* Helper */,
+				8A519909231F0A170053FED4 /* Component */,
 				8A519908231F0A020053FED4 /* DesignSystem */,
 				8A5198F4231ECA6A0053FED4 /* AppDelegate.swift */,
 				8A5198F6231ECA6A0053FED4 /* SceneDelegate.swift */,
@@ -93,11 +98,12 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
-		8A519909231F0A170053FED4 /* Components */ = {
+		8A519909231F0A170053FED4 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				8A519911231FF0A30053FED4 /* Button.swift */,
 			);
-			path = Components;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		8A51990A231F0A1F0053FED4 /* Assets */ = {
@@ -106,6 +112,14 @@
 				8A51990D231F28710053FED4 /* ColorPalette.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		8A519913231FFA680053FED4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8A519914231FFA7A0053FED4 /* AliasHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,8 +195,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5198F5231ECA6A0053FED4 /* AppDelegate.swift in Sources */,
+				8A519912231FF0A30053FED4 /* Button.swift in Sources */,
 				8A5198F7231ECA6A0053FED4 /* SceneDelegate.swift in Sources */,
 				8A51990C231F0A360053FED4 /* Typography.swift in Sources */,
+				8A519915231FFA7A0053FED4 /* AliasHelper.swift in Sources */,
 				8A519910231F29990053FED4 /* ColorPalatte.swift in Sources */,
 				8A5198F9231ECA6A0053FED4 /* ContentView.swift in Sources */,
 			);
