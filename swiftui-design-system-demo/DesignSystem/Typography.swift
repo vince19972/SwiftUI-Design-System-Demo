@@ -11,7 +11,7 @@ import SwiftUI
 ///
 // MARK: Base typography materials
 ///
-struct BaseTypography {
+struct TokenTypography {
 
     ///
     // 1. Prepare base materials
@@ -76,7 +76,7 @@ struct BaseTypography {
 }
 
 /// Helper functions
-extension BaseTypography {
+extension TokenTypography {
     public func sizingFont(font: FontFamilyToken, size: FontSizeToken) -> Font {
         return Font.custom(font.getValue(), size: size.getValue())
     }
@@ -92,5 +92,5 @@ extension BaseTypography {
 /// ------
 ///
 extension Font {
-    static let Typography = BaseTypography()
+    static let Typography = TokenTypography()
 }
