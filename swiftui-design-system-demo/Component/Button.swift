@@ -356,13 +356,15 @@ extension TokenButtonStyle {
         case regular
     }
     enum TextColor {
-        case highlight, light
+        case highlight, light, theme
         
         func getColor() -> Color {
             switch self {
             case .highlight:
                 return Color.Token.textHighlight
             case .light:
+                return Color.Token.textLight
+            case .theme:
                 return Color.Token.textTheme
             }
         }
